@@ -1,0 +1,12 @@
+Vagrant.configure(2) do |config|
+ config.vm.define :chefnode2 do |chefnode2|
+ 	chefnode2.vm.box = "bento/centos-6.7"
+	chefnode2.vm.hostname = "chefnode2"
+	chefnode2.vm.network "private_network", ip:"10.20.30.130"
+ 
+ config.vm.provider "virtualbox" do |v|
+     v.memory = 512
+     v.cpus = 2
+  end
+ end
+end

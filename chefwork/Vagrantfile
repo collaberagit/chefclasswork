@@ -1,0 +1,12 @@
+Vagrant.configure(2) do |config|
+ config.vm.define :chefwork do |chefwork|
+ 	chefwork.vm.box = "bento/centos-6.7"
+	chefwork.vm.hostname = "chefwork"
+	chefwork.vm.network "private_network", ip:"10.20.30.110"
+ 
+ config.vm.provider "virtualbox" do |v|
+     v.memory = 1024
+     v.cpus = 2
+  end
+ end
+end
