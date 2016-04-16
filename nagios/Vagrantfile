@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.define "nagios" do |nagios|
+  nagios.vm.box = "bento/centos-6.7"
+  nagios.vm.hostname = 'nagios'
+  nagios.vm.network :private_network, ip: "192.168.56.90"
+  end
+
+  config.vm.define "node1" do |node1|
+  node1.vm.box = "bento/centos-6.7"
+  node1.vm.hostname = 'node1'
+  node1.vm.network :private_network, ip: "192.168.56.91"
+  end
+
+
+  config.vm.define "node2" do |node2|
+  node2.vm.box = "bento/centos-6.7"
+  node2.vm.hostname = 'node2'
+  node2.vm.network :private_network, ip: "192.168.56.92"
+  end
+
+  config.vm.define "node3" do |node3|
+  node3.vm.box = "bento/centos-6.7"
+  node3.vm.hostname = 'node3'
+  node3.vm.network :private_network, ip: "192.168.56.93"
+  end
+  config.vm.provision "shell", inline: 'sudo cp /vagrant/hosts /etc/hosts'
+end
