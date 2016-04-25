@@ -1,0 +1,6 @@
+192.168.56.90		puppet.example.com  puppet
+192.168.56.91		node1.example.com  node1
+192.168.56.92		node2.example.com  node2
+192.168.56.93		node3.example.com  node3
+127.0.0.1   nagios localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
