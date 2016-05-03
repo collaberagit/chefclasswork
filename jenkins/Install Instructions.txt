@@ -1,0 +1,38 @@
+Jenkins
+
+http://pkg.jenkins-ci.org/redhat-stable/
+sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+sudo rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
+yum install -y jenkins
+service jenkins start
+
+JAVA
+
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u73-b02/jdk-8u73-linux-x64.rpm
+rpm -ivh jdk-8u73-linux-x64.rpm
+echo 'export JAVA_HOME="/usr/java/latest"' >> /etc/bashrc
+export JAVA_HOME="/usr/java/latest"
+
+
+GIT
+
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker -y
+cd /usr/src
+wget https://www.kernel.org/pub/software/scm/git/git-1.9.4.tar.gz
+tar xzf git-1.9.4.tar.gz
+cd git-1.9.4
+make prefix=/usr/local/git all
+make prefix=/usr/local/git install
+echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc
+source /etc/bashrc
+
+
+Tomcat 
+
+java -version
+cd /tmp
+wget http://mirror.reverse.net/pub/apache/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz
+tar xzf apache-tomcat-7.0.69.tar.gz
+mv apache-tomcat-7.0.69 /usr/local/tomcat7
+cd /usr/local/tomcat7
+./bin/startup.sh
